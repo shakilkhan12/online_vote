@@ -3,10 +3,10 @@ $(document).ready(function(){
 	cnic = "";
 	email = "";
 	address = "";
-	upload = "";
 	gender = "";
-	province = "";
+	district = "";
   party = "";
+   
 
 
     //validating name field
@@ -107,6 +107,7 @@ $('#email').focusout(function(){
     $('.email-error').html('Email is required!');
     $('#email').addClass('border-red');
     $('#email').removeClass('border-green');
+    email = "";
   }
   else
   {
@@ -146,6 +147,7 @@ $('#email').focusout(function(){
       $('.email-error').html('Sorry Invalid email!');
       $('#email').addClass('border-red');
       $('#email').removeClass('border-green');
+      email = "";
     }
   }
 
@@ -170,6 +172,7 @@ $('#address').focusout(function(){
     $('.address-error').html('');
     $('#address').addClass('border-green');
     $('#address').removeClass('border-red');
+    address = store;
   }
 
 });
@@ -215,8 +218,73 @@ $('#party').focusout(function(){
 
 });
 
+//validating gender
+$('#male').click(function(){
+ gender = 'male';
+ 
+});
+
+$('#famle').click(function(){
+gender = 'female';
+
+});
+
+//validating province
+$('#list').change(function(){
+ var distric = $(this).val();
+ if(distric == '')
+ {
+ $('.distric-error').html('Please Select District!');
+ $('.distric-error').addClass('border-red');
+ $('.distric-error').removeClass('border-green');
+ district = "";
+}
+else
+{
+  $.ajax({
+  type    :   "POST",
+  url     :   "ajax/condidate_sign.php",
+  data    :   {district : distric},
+  success :   function(data)
+  {
+    $('.distric-error').html(data);
+    $('.distric-error').addClass('border-green');
+    $('.distric-error').removeClass('border-red');
+   
+    
+
+    $('input:radio[name = distric_s]').change(function(){
+   var store = $(this).val();
+   district = store;
+    });
+  }
+
+  
+
+  });
+}
+
+});
 
 
+
+
+
+
+
+
+ $('#submit').click(function(){
+  if(name == "" || cnic == "" || email == "" || address == "" || gender == "" || district == "" || party == "")
+   {
+    $('.sorry').addClass('khan');
+    $('.sorry').html('<strong>Error!  </strong>'+'Sorry please fill out all fields and try again!');
+    // alert('sorru');
+  }
+  else
+  {
+    alert('ok now insert');
+  }
+});
 
 
 

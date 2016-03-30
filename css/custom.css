@@ -1,12 +1,13 @@
     .container
     {
     	margin-top: 40px;
+        padding-bottom: 90px;
     }
     body
     {
     	background-color: #F6F6F6;
     }
-    #result
+    .distric-error
     {
     height: auto;
    -webkit-column-count: 2;
@@ -43,6 +44,10 @@
 .upload
 {
 	border-radius: 3px;
+    width: 50%;
+    height: 80px;
+    padding-top: 30px;
+    font-size: 20px;
 }
 .name-error
 {
@@ -56,7 +61,7 @@
 .border-green
 {
     border-color: green !important;
-    color:green;
+    color:green !important;
 }
 .cnic-error
 {
@@ -65,4 +70,12 @@
 .error
 {
     color:red;
+}
+.khan
+{
+    border:1px solid red;
+    color:red;
+    padding:5px 10px;
+    text-align: center;
+    border-radius: 4px;
 }

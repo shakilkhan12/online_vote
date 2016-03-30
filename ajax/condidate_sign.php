@@ -54,4 +54,21 @@
 
  }
 
+
+
+
+
+ //validating provice filed
+ if(isset($_POST['district']))
+{
+	$district = $_POST['district'];
+	$s_query = mysqli_query($con,"SELECT * FROM distric WHERE country_id = '$district'");
+    while($r = mysqli_fetch_array($s_query))
+    {
+       
+    	echo "<input type='radio' name='distric_s' id='dis' value='$r[distric]'>",$r[distric],"<br>";
+    	
+    }
+}
+
  ?>

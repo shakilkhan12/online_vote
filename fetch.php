@@ -7,7 +7,7 @@ if(isset($_GET['store']))
     while($r = mysqli_fetch_array($s_query))
     {
 
-    	echo "<input type='radio' name='distric_s' value='$r[distric]'>",$r['distric'],"<br>";
+    	echo "<input type='radio' value='$r[distric]'>",$r['distric'],"<br>";
     }
 }
 
