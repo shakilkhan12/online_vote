@@ -71,4 +71,24 @@
     }
 }
 
+
+
+//insert signup data into database
+if(isset($_POST['name1']) && isset($_POST['email1']) && isset($_POST['address1']) && isset($_POST['gender1']) && isset($_POST['district1']) && isset($_POST['party1']))
+{
+	$name = trim(htmlspecialchars($_POST['name1']));
+	echo $name = mysqli_real_escape_string($con, $name);
+	$email = trim(htmlspecialchars($_POST['email1']));
+	echo $email = mysqli_real_escape_string($con, $email);
+	$address = trim(htmlspecialchars($_POST['address1']));
+	echo $address = mysqli_real_escape_string($con, $address);
+	$gender = trim(htmlspecialchars($_POST['gender1']));
+	echo $gender = mysqli_real_escape_string($con, $gender);
+	$district = trim(htmlspecialchars($_POST['district1']));
+	echo $district = mysqli_real_escape_string($con, $district);
+	$party = trim(htmlspecialchars($_POST['party1']));
+	echo $party = mysqli_real_escape_string($con, $party);
+
+}
+
  ?>

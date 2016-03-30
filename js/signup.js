@@ -282,7 +282,21 @@ else
   }
   else
   {
-    alert('ok now insert');
+   
+
+
+  $.ajax({
+  type     :    'POST',
+  url      :    'ajax/condidate_sign.php',
+  data     :    {name1 : name,email1 : email,address1 : address,gender1 : gender,district1 : district,party1 : party},
+  success  :    function(data)
+  {
+    alert(data);
+  }
+
+  });
+
+
   }
 });
 
