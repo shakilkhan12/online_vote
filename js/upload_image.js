@@ -13,7 +13,7 @@ $(document).ready(function(){
 
  $.ajax({
       type     :    "POST",
-      url      :    "ajax/upload_image.php",
+      url      :    "ajax/upload_img.php",
       enctype   : 'multipart/form-data',
       contentType : false,
       cache    : false,
@@ -21,11 +21,22 @@ $(document).ready(function(){
       data     :   new FormData($('#myform')[0]),
       // data     :     {file1 : file},
       success  :    function(data){
-      	console.log(data);
+      	// alert(data);
+      	if(data.indexOf('8') > -1)
+      	{
+      		window.location = 'admain/welcome.php';
+      	}
+      	else if(data.indexOf('9') > -1)
+      	{
+      		$('.files_error').html('Query not work');
+      	}
+      	else if(data.indexOf('7') > -1)
+      	{
+      		$('.files_error').html('Invalide image formate');
+      	}
       }
 
-
-
-  });
+});
 }
+  });
 });
