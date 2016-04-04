@@ -9,7 +9,7 @@
  	$cnic = htmlspecialchars($_POST['cnic']);
    // to prevent SQL injection use mysqli_real_escape_string
  	$cnic = trim(mysqli_real_escape_string($con, $cnic));
- 	$query_cnic = mysqli_query($con,"SELECT `cnic` FROM `vote2` WHERE cnic='$cnic' ");
+ 	$query_cnic = mysqli_query($con,"SELECT `cnic` FROM `signup_condidate` WHERE cnic='$cnic' ");
  	$query_cnic_count = mysqli_num_rows($query_cnic);
  	if($query_cnic_count == 1)
  	{
@@ -25,7 +25,7 @@
  {
  	$email = htmlspecialchars($_POST['email']);
  	$email = trim(mysqli_real_escape_string($con,$email));
- 	$query_eamil = mysqli_query($con,"SELECT `email` FROM `vote2` WHERE email = '$email' ");
+ 	$query_eamil = mysqli_query($con,"SELECT `email` FROM `signup_condidate` WHERE email = '$email' ");
  	$query_eamil_count = mysqli_num_rows($query_eamil);
  	if($query_eamil_count == 1)
  	{
@@ -74,21 +74,81 @@
 
 
 //insert signup data into database
-if(isset($_POST['name1']) && isset($_POST['email1']) && isset($_POST['address1']) && isset($_POST['gender1']) && isset($_POST['district1']) && isset($_POST['party1']))
+if(isset($_POST['name1']) && isset($_POST['email1']) && isset($_POST['address1']) && isset($_POST['gender1']) && isset($_POST['district1']) && isset($_POST['party1']) && isset($_POST['cnic1']))
 {
 	$name = trim(htmlspecialchars($_POST['name1']));
-	echo $name = mysqli_real_escape_string($con, $name);
+    $name = mysqli_real_escape_string($con, $name);
+    $cnic = trim(htmlspecialchars($_POST['cnic1']));
+    $cnic = mysqli_real_escape_string($con,$cnic);
 	$email = trim(htmlspecialchars($_POST['email1']));
-	echo $email = mysqli_real_escape_string($con, $email);
+	$email = mysqli_real_escape_string($con, $email);
 	$address = trim(htmlspecialchars($_POST['address1']));
-	echo $address = mysqli_real_escape_string($con, $address);
+	$address = mysqli_real_escape_string($con, $address);
 	$gender = trim(htmlspecialchars($_POST['gender1']));
-	echo $gender = mysqli_real_escape_string($con, $gender);
+	$gender = mysqli_real_escape_string($con, $gender);
 	$district = trim(htmlspecialchars($_POST['district1']));
-	echo $district = mysqli_real_escape_string($con, $district);
+	$district = mysqli_real_escape_string($con, $district);
 	$party = trim(htmlspecialchars($_POST['party1']));
-	echo $party = mysqli_real_escape_string($con, $party);
-
+	$party = mysqli_real_escape_string($con, $party);
+    $query_i = mysqli_query($con,"INSERT INTO signup_condidate(name,cnic,email,address,gender,district,party) VALUES ('$name','$cnic','$email','$address','$gender','$district','$party')");
+    if($query_i)
+    {
+    	
+    	$_SESSION['cnic'] = $cnic; 
+    	echo '1';
+    }
+    else
+    {
+    	echo '0';
+    }
 }
+
+
+//upload files
+if(isset($_FILES['file']['name']))
+{
+	$name_file = $_FILES['file']['name'];
+	$tem_name = $_FILES['file']['tmp_name'];
+	$size = $_FILES['file']['size'];
+	$store_files = 'store_files/';
+	$exten = array('pdf','docx');
+	$exten_allo = end(explode('.',$name_file));
+	if(in_array($exten_allo,$exten))
+	{
+    if($size < 10485760)
+    {
+    	
+    $cnic_s = $_SESSION['cnic'];
+    move_uploaded_file($tem_name,$store_files.$name_file);
+    $query_files = mysqli_query($con,"UPDATE `signup_condidate` SET `files` = '$name_file' WHERE `cnic` = '$cnic_s'");
+    if($query_files)
+    {
+    	echo '3';
+
+    }
+    else
+    {
+    	//query not work
+    	echo '4';
+    }
+
+    }
+    else
+    {
+    	//large size of files
+    	echo '5';
+    }
+	}
+	else
+	{
+		//invalid formate
+echo '6';
+	}
+}
+
+
+
+
+
 
  ?>

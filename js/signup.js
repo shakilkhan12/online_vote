@@ -288,10 +288,17 @@ else
   $.ajax({
   type     :    'POST',
   url      :    'ajax/condidate_sign.php',
-  data     :    {name1 : name,email1 : email,address1 : address,gender1 : gender,district1 : district,party1 : party},
+  data     :    {name1 : name,email1 : email,address1 : address,gender1 : gender,district1 : district,party1 : party,cnic1 : cnic},
   success  :    function(data)
   {
-    alert(data);
+    if(data == '1')
+    {
+      window.location = 'upload_files.php';
+    }
+    else
+    {
+      $('.sorry').html('Sorry query not workr');
+    }
   }
 
   });
