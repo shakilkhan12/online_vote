@@ -1,6 +1,7 @@
 <?php include_once '../inc/connection.php'; ?>
+<?php include_once '../inc/function/func.php'; ?>
 <?php 
-session_destroy();
+
  ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -41,12 +42,17 @@ session_destroy();
      </div>
   </div>
   </div><!--close top-bar-->
-  <div class="row">
-  <div class="medium-8 column medium-offset-2">
-  <h3 style="margin-top: 30px;" class="text-center">Congratulation!</h3><hr>
-<div class="success text-center">
-	<p>Soon we will sent feedback to your email address thank you</p>
-</div>
+  <div class="row admin-row">
+  <div class="medium-4 column medium-offset-4">
+  <form action="" method="post">
+   <h3>Admin login</h3><hr>
+   <input type="email" name="email" placeholder="Enter Email...">
+   <input type="password" name="password" placeholder="Enter Password...">
+   <input type="submit" name="admin_login" value="Login" class="primary button hollow">
+  </form><!--form close-->
+ <?php 
+       admin_login();
+        ?>
 </div>
 </div>
 

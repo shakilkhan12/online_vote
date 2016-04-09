@@ -1,6 +1,12 @@
+ 
 <?php include_once '../inc/connection.php'; ?>
+<?php include_once '../inc/function/func.php'; ?>
 <?php 
-session_destroy();
+if(!isset($_SESSION['email'])){
+    header("Location:admin_login.php");
+    exit();
+
+}
  ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -35,18 +41,17 @@ session_destroy();
     </div>
          <div class="top-bar-right">
        <ul class="menu">
-         <li><input type="text" placeholder="Search......"></li>
-         <li><input type="submit" value="Search" class="primary button hollow"></li>
+       <li><?php echo $_SESSION['email']; ?></li>
+         <li><a href="logout.php">Logout</a></li>
+         
        </ul>
      </div>
   </div>
   </div><!--close top-bar-->
-  <div class="row">
-  <div class="medium-8 column medium-offset-2">
-  <h3 style="margin-top: 30px;" class="text-center">Congratulation!</h3><hr>
-<div class="success text-center">
-	<p>Soon we will sent feedback to your email address thank you</p>
-</div>
+  <div class="row admin-row">
+  <div class="medium-12 column">
+  <h4>All Condidates records</h4><hr>
+ <?php admin_view(); ?>
 </div>
 </div>
 
@@ -65,3 +70,5 @@ session_destroy();
 <!-- <script type="text/javascript" src="js/upload_image.js"></script> -->
 <!-- <script type="text/javascript" src="js/signup.js"></script>	 -->
 </body>
+
+

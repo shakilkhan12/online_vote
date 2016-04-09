@@ -1,103 +1,24 @@
-<?php
-include_once "inc/connection.php";
-// include_once "inc/condidate_app.php";
-?>
-<!DOCTYPE html>
-<html class="no-js" lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title></title>
-	<!--linking css files-->
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" type="text/css" href="font-social/css/font-awesome.min.css">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Online Voting System</title>
-    <link rel="stylesheet" href="css/foundation.css" />
-    <link rel="stylesheet" href="css/app.css" />
-    <link rel="stylesheet" href="css/custom.css">
-</head>
+<?php include_once "overall/header.php"; ?>
 <body>
-
-  <div class="top-bar">
-      <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
-      <span class="menu-icon dark" data-toggle></span>
-    </span>
-  <div id="responsive-menu">
-    <div class="top-bar-left">
-     <ul class="dropdown menu" data-dropdown-menu>
-       <li class="menu-text">Vote</li>
-       <li><a href="#" class="item">Home</a></li>
-       <li><a href="#" class="item">Tutorials</a></li>
-       <li><a href="#" class="item">Images</a></li>
-       <li><a href="#" class="item">About Us</a></li>
-       <li><a href="#" class="item">Contact Us</a></li>
-     </ul>
-    </div>
-         <div class="top-bar-right">
-       <ul class="menu">
-         <li><input type="text" placeholder="Search......"></li>
-         <li><input type="submit" value="Search" class="primary button hollow"></li>
-       </ul>
-     </div>
-  </div>
-  </div><!--close top-bar-->
-<div class="container">
-<div class="row">
-<div class="medium-8 column">
-	<img src="img/vote.jpg" alt="" width="600" height="600">
-</div>
-<div class="medium-4 column">
-<h3>Apply Candidate</h3><hr>
-<form method="post" action="" enctype="multipart/form-data">
-<label for="name">Enter Name</label>
-<input type="text" id="name" placeholder="Enter Name..." required=""><div class="name-error"></div>
-<label for="cnic">Enter Cnic</label>
-<input type="text" id="cnic" placeholder="Enter CNIC Number..."required="" maxlength="13"><div class="cnic-error" class="error"></div>
-<label for="email">Enter Email</label>
-<input type="email" id="email" placeholder="Enter Email Address...."required="">
-<div class="email-error error"></div>
-<label for="address">Enter Address</label>
-<input type="text" id="address" placeholder="Enter Address...."required="">
-<div class="address-error error"></div>
-<label for="part">Enter Party</label>
-<input type="text" id="party" placeholder="Enter Party.....">
-<div class="party-error error"></div>
-<blockquote>Note! For party you can enter only PTI,PMLN,PPP,ANP,QWP,MQM,JUI,JUI otherwise you will return error!</blockquote>
-
-<input type="radio" name="gender"id="male" >&nbsp;Male
-<input type="radio" name="gender" id="famle">&nbsp;Famale
-<select id="list" name="select">
-  <option value="">Select Distric</option>
-	<option value="1">KPK</option>
-	<option value="2">PUNJAB</option>
-	<option value="3">SINDH</option>
-	<option value="4">BALUCHISTAN</option>
-
-</select>
-<div class="distric-error error"></div>
-<input type="button" id="submit" name="submit" value="Apply" class="primary button hollow">
-
-</form>
-<div class="sorry">
-  
-</div>
-</div>
-</div>
-</div><!--close container tag-->
-
-
-<!--adding javascirpt files-->
- <script src="js/vendor/jquery.min.js"></script>
- <script src="js/vendor/what-input.min.js"></script>
- <script src="js/foundation.min.js"></script>
- <script src="js/app.js"></script>
-<script type="text/javascript" src="jquery.js"></script>
-<!-- <script type="text/javascript" src="ajax.js"></script> -->
-<script type="text/javascript" src="js/upload.js"></script>	
-<script type="text/javascript" src="js/signup.js"></script>
+<?php include_once "overall/nav.php"; ?>
+<img src="img/banner.png" alt="not found" class="banner">
+<div class="row index-page marquee">
+	<div class="medium-12 columns">
+		<marquee behavior="" direction=""><a href="#">NA 23 PTI leads 2300 votes PMLN has seonods positon</a></marquee>
+	</div><!--medium 12 close-->
+</div><!--row close-->
+	<div class="row index-page">
+		<div class="medium-10 columns">
+        <h3>Wellcome to voting system</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste dolorem reprehenderit alias voluptatum illum sunt consectetur, aliquam cum aspernatur dolorum rem! Provident corporis atque assumenda nihil deleniti odit natus esse!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed veniam dolor recusandae id ut nam mollitia earum aliquam architecto modi est maiores sapiente, tempore officia beatae voluptatem dicta nesciunt, amet!
+		</div><!--col medium 12 close-->
+		<div class="medium-2 columns">
+        <i class="fa fa-facebook fa-lg"></i>&nbsp;&nbsp;&nbsp;
+        <i class="fa fa-twitter fa-lg"></i>&nbsp;&nbsp;&nbsp;
+        <i class="fa fa-linkedin fa-lg"></i>&nbsp;&nbsp;&nbsp;
+        <i class="fa fa-google-plus fa-lg"></i>&nbsp;&nbsp;&nbsp;
+		</div><!--col medium 4 close-->
+	</div><!--row close-->
+	<?php include_once "overall/javascript_files.php"; ?>
 
 </body>
-</html>
-
-
