@@ -8,6 +8,7 @@
        <li class="menu-text">Vote</li>
        <li><a href="index.php" class="item">Home</a></li>
        <li><a href="condidate_apply.php" class="item">Condidate apply</a></li>
+       <li><a href="admain/admin_login.php" class="item">Admin</a></li>
        <li><a href="#" class="item">About Us</a></li>
        <li><a href="#" class="item">Contact Us</a></li>
      </ul>
