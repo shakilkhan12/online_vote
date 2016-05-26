@@ -90,7 +90,8 @@ if(isset($_POST['name1']) && isset($_POST['email1']) && isset($_POST['address1']
 	$district = mysqli_real_escape_string($con, $district);
 	$party = trim(htmlspecialchars($_POST['party1']));
 	$party = mysqli_real_escape_string($con, $party);
-    $query_i = mysqli_query($con,"INSERT INTO signup_condidate(name,cnic,email,address,gender,district,party) VALUES ('$name','$cnic','$email','$address','$gender','$district','$party')");
+    $status = 'pendding';
+    $query_i = mysqli_query($con,"INSERT INTO signup_condidate(name,cnic,email,address,gender,district,party,status) VALUES ('$name','$cnic','$email','$address','$gender','$district','$party','$status')");
     if($query_i)
     {
     	

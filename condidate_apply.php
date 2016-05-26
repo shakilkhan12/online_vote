@@ -7,8 +7,8 @@ include_once "inc/connection.php";
 <?php include_once 'overall/nav.php'; ?>
 <div class="container">
 <div class="row">
-<div class="medium-8 column">
-	<img src="img/vote.jpg" alt="" width="600" height="600">
+<div class="medium-8 column text-center" style="padding-top:90px;">
+	<img src="img/log.png" alt="" width="200" height="200">
 </div>
 <div class="medium-4 column">
 <h3>Apply Candidate</h3><hr>

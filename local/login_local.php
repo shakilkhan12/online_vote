@@ -1,13 +1,5 @@
- 
-<?php include_once '../inc/connection.php'; ?>
+<?php session_start(); ?>
 <?php include_once '../inc/function/func.php'; ?>
-<?php 
-if(!isset($_SESSION['email'])){
-    header("Location:admin_login.php");
-    exit();
-
-}
- ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
@@ -22,34 +14,27 @@ if(!isset($_SESSION['email'])){
     <link rel="stylesheet" href="../css/foundation.css" />
     <link rel="stylesheet" href="../css/app.css" />
     <link rel="stylesheet" href="../css/custom.css">
+
 </head>
 <body>
 <?php include_once 'overall/nav.php'; ?>
-  <div class="row change-row">
-  <div class="medium-2 column">
-    
+  <div class="row admin-row">
+  <div class="medium-12 column">
+  <div class="row">
+    <div class="medium-4 column medium-offset-3">
+     <h3>Login Local Admin!</h3><hr>
+     <form action="" method="POST">
+       
+    <input type="text" name="username" placeholder="Enter Username...">
+    <input type="password" name="password" placeholder="Enter Password...">
+    <input type="submit" name="local" value="Login" class="primary hollow button">
 
-   <ul class="vertical dropdown menu custom-menu" data-dropdown-menu style="max-width: 300px;">
-  <li><a href="#" class="text-center">Dashboard</a></li>
-  <li><a href="localadmin.php" class="text-center">Local Admin</a></li>
-  <li><a href="#" class="text-center">Condidates</a></li>
-  <li><a href="#" class="text-center">Delete</a></li>
-  <li><a href="#" class="text-center">Item 1</a></li>
-  <li><a href="#" class="text-center">Item 1</a></li>
-  <li><a href="#" class="text-center">Item 1</a></li>
-  <li><a href="#" class="text-center">Item 1</a></li>
-  <li><a href="#" class="text-center">Item 1</a></li>
-  <!-- ... -->
-</ul>
+     </form><!--form close-->
+     <?php local_login(); ?> 
 
+    </div><!--medim 6 close-->
+  </div><!--row close--> 
 
-
-  </div>
-  <div class="medium-10 column change-margin">
-  <h4>All Condidates records</h4><hr>
- <?php admin_view(); ?>
- <?php approve(); ?>
- <?php disapprove(); ?>
 </div>
 </div>
 
@@ -64,6 +49,7 @@ if(!isset($_SESSION['email'])){
  <!-- <script src="js/upload_files.js"></script> -->
 <script type="text/javascript" src="../jquery.js"></script>
 <script type="text/javascript" src="../ajax.js"></script>
+<script type="text/javascript" src="ajax.js"></script>
 <!-- <script type="text/javascript" src="js/upload.js"></script>	 -->
 <!-- <script type="text/javascript" src="js/upload_image.js"></script> -->
 <!-- <script type="text/javascript" src="js/signup.js"></script>	 -->

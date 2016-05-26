@@ -205,3 +205,39 @@ td:hover .cond_img
     border:2px solid white;
     border-radius: 7px;
 }
+.custom-menu
+{
+    background-color: #415E9B;
+    height: 600px;
+}
+.custom-menu a 
+{
+    color:white;
+
+}
+.custom-menu a:hover
+{
+    background-color: white;
+    color:black;
+}
+.change-row
+{
+    margin:0px;
+    padding-left:-10px;
+    margin-left:-15px;
+}
+.change-margin
+{
+    padding-top:30px;
+}
+.error-occur
+{
+    width: 300px;
+    height: 50px;
+    background-color: #F2DEDE;
+    text-align:center;
+    color: #A94442;
+    padding-top:10px;
+    border-radius: 4px;
+    border:1px solid #A94442;
+}

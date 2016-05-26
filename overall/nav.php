@@ -6,8 +6,9 @@
     <div class="top-bar-left">
      <ul class="dropdown menu" data-dropdown-menu>
        <li><a href="index.php" class="item">Home</a></li>
-       <li><a href="condidate_apply.php" class="item">Condidate apply</a></li>
-       <li><a href="admain/admin_login.php" class="item">Admin</a></li>
+       <li><a href="registration.php" class="item">Registration</a></li>
+       <li><a href="admain/login_page.php" class="item">login</a></li>
+      <li><a href="result.php" class="item">Result</a></li>
        <li><a href="#" class="item">About Us</a></li>
        <li><a href="#" class="item">Contact Us</a></li>
      </ul>
