@@ -1,4 +1,13 @@
 <?php session_start(); ?>
+<?php 
+
+if(isset($_SESSION['email']))
+{
+  header('Location:admin_view.php');
+}
+
+
+ ?>
 <?php include_once '../inc/function/func.php'; ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">

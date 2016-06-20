@@ -193,6 +193,7 @@ td:hover .cond_img
     padding:15px 30px;
     background: white;
     border-radius: 5px;
+    text-align: justify;
 }
 .banner
 {
@@ -232,12 +233,18 @@ td:hover .cond_img
 }
 .error-occur
 {
-    width: 300px;
-    height: 50px;
+    width: auto ;
+    height: auto;
     background-color: #F2DEDE;
     text-align:center;
     color: #A94442;
-    padding-top:10px;
+    padding:10px 10px;
     border-radius: 4px;
-    border:1px solid #A94442;
+    
+}
+.success_voter
+{
+    background: #DFF0D8;
+    padding:10px 10px;
+    color: #3C763D;
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 26, 2016 at 03:25 AM
+-- Generation Time: Jun 20, 2016 at 12:47 PM
 -- Server version: 5.6.22
 -- PHP Version: 5.6.4
 
@@ -454,19 +454,21 @@ CREATE TABLE IF NOT EXISTS `signup_condidate` (
   `party` varchar(30) NOT NULL,
   `files` varchar(100) NOT NULL,
   `image` varchar(100) NOT NULL,
-  `status` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+  `status` varchar(30) NOT NULL,
+  `msg` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `signup_condidate`
 --
 
-INSERT INTO `signup_condidate` (`id`, `name`, `cnic`, `email`, `address`, `gender`, `district`, `party`, `files`, `image`, `status`) VALUES
-(46, 'ali', 7937459374937, 'ali@gmail.com', 'charsada', 'male', 'NA-1 Peshawar-I', 'anp', '_Ajax-for-PHP-Developers.pdf', '11866434_836337816480822_1618991520625361534_n.jpg', 'approve'),
-(47, 'marwat', 3947593475983, 'marwat@gmail.com', 'laki', 'male', 'NA-25\nD.I.Khan-cum-Tank', 'pmln', '_Ajax-for-PHP-Developers.pdf', '10665692_1564111303835127_8590419012784163546_n.jpg', 'pendding'),
-(48, 'muhammad ali shah bacha', 4098350348503, 'muhammadalisha@gmail.com', 'dargai', 'male', 'NA-34\nLower Dir', 'ppp', '_Ajax-for-PHP-Developers.pdf', '10649797_354745511343887_4086024460635827746_n.jpg', 'disapprove'),
-(49, 'wajih', 4584058609586, 'wajih@gmail.com', 'jolagram', 'male', 'NA-6 Nowshera-II', 'ppp', '_Ajax-for-PHP-Developers.pdf', '10402675_1540224056274067_7500803655640700865_n.jpg', 'approve'),
-(50, 'tariq', 3987598347598, 'charsarda@gamil.com', 'lskjdlfkjdsl', 'female', 'NA-1 Peshawar-I', 'pti', '_Ajax-for-PHP-Developers.pdf', '13045683_1791104627787723_1622023385_n.jpg', 'approve');
+INSERT INTO `signup_condidate` (`id`, `name`, `cnic`, `email`, `address`, `gender`, `district`, `party`, `files`, `image`, `status`, `msg`) VALUES
+(46, 'ali', 7937459374937, 'ali@gmail.com', 'charsada', 'male', 'NA-1 Peshawar-I', 'anp', '_Ajax-for-PHP-Developers.pdf', '11866434_836337816480822_1618991520625361534_n.jpg', 'disapprove', 'sorry you are over age you are not able to stand for election thank you for apply       \r\n     '),
+(47, 'marwat', 3947593475983, 'marwat@gmail.com', 'laki', 'male', 'NA-25\nD.I.Khan-cum-Tank', 'pmln', '_Ajax-for-PHP-Developers.pdf', '10665692_1564111303835127_8590419012784163546_n.jpg', 'disapprove', 'sorry you are not eligibal        \r\n     '),
+(48, 'muhammad ali shah bacha', 4098350348503, 'muhammadalisha@gmail.com', 'dargai', 'male', 'NA-34\nLower Dir', 'ppp', '_Ajax-for-PHP-Developers.pdf', '10649797_354745511343887_4086024460635827746_n.jpg', 'pendding', ''),
+(49, 'wajih', 4584058609586, 'wajih@gmail.com', 'jolagram', 'male', 'NA-6 Nowshera-II', 'ppp', '_Ajax-for-PHP-Developers.pdf', '10402675_1540224056274067_7500803655640700865_n.jpg', 'pendding', ''),
+(50, 'tariq', 3987598347598, 'charsarda@gamil.com', 'lskjdlfkjdsl', 'female', 'NA-1 Peshawar-I', 'pti', '_Ajax-for-PHP-Developers.pdf', '13045683_1791104627787723_1622023385_n.jpg', 'pendding', ''),
+(51, 'wali khan', 5656565656565, 'walikhang@gmail.com', 'timragara', 'male', 'NA-1 Peshawar-I', 'ppp', '8.2.diehl_online-voting-project_213-222.pdf', '13045683_1791104627787723_1622023385_n.jpg', 'pendding', '');
 
 -- --------------------------------------------------------
 
@@ -521,6 +523,32 @@ INSERT INTO `vote2` (`id`, `name`, `cnic`, `email`, `address`, `img_name`, `gend
 (80, 'shakil ahmed khan rughani', 4564564564567, 'ahmed@gmai.com', 'sdlkjflksd', 'AJAX_with_jQuery.pdf', 'Male', '1', 'Bannu'),
 (81, 'harron rashid', 7686787687684, 'harronrashi@gmail.com', 'chakdara', 'AJAX_with_jQuery.pdf', 'Male', '1', 'Lower Dir'),
 (83, 'sharjeel', 3435343242342, 'sharjeel@gmail.com', 'karachi sindh', 'lect10.pdf', 'Male', '3', 'Matiari');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `voter_register`
+--
+
+CREATE TABLE IF NOT EXISTS `voter_register` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `f_name` varchar(50) NOT NULL,
+  `cnic` varchar(15) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `gender` varchar(20) NOT NULL,
+  `na` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `voter_register`
+--
+
+INSERT INTO `voter_register` (`id`, `name`, `f_name`, `cnic`, `address`, `gender`, `na`) VALUES
+(1, 'haroon', 'fazal khan', '1540255410649', 'chakdara', 'male', 'dir'),
+(2, 'muhammad ishaq', 'haji gul zada khan', '1234567891234', 'ouch', 'Male', 'NA-34\nLower Dir'),
+(3, 'jamil', 'waheed khan', '1234567812345', 'dir', 'Male', 'NA-1 Peshawar-I'),
+(16, 'sad', 'sad', '3453453455555', 'sdsdf', 'Male', 'NA-1 Peshawar-I');
 
 --
 -- Indexes for dumped tables
@@ -581,6 +609,12 @@ ALTER TABLE `vote2`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `voter_register`
+--
+ALTER TABLE `voter_register`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -618,7 +652,7 @@ ALTER TABLE `party`
 -- AUTO_INCREMENT for table `signup_condidate`
 --
 ALTER TABLE `signup_condidate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `vote`
 --
@@ -629,6 +663,11 @@ ALTER TABLE `vote`
 --
 ALTER TABLE `vote2`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=84;
+--
+-- AUTO_INCREMENT for table `voter_register`
+--
+ALTER TABLE `voter_register`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

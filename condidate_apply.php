@@ -52,6 +52,8 @@ include_once "inc/connection.php";
 
 <!--adding javascirpt files-->
 <?php include_once 'overall/javascript_files.php'; ?>
+<script type="text/javascript" src="js/upload.js"></script>	
+<script type="text/javascript" src="js/signup.js"></script>
 
 </body>
 </html>

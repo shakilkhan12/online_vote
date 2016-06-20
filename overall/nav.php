@@ -7,10 +7,20 @@
      <ul class="dropdown menu" data-dropdown-menu>
        <li><a href="index.php" class="item">Home</a></li>
        <li><a href="registration.php" class="item">Registration</a></li>
-       <li><a href="admain/login_page.php" class="item">login</a></li>
       <li><a href="result.php" class="item">Result</a></li>
        <li><a href="#" class="item">About Us</a></li>
        <li><a href="#" class="item">Contact Us</a></li>
+       <?php
+        session_start();
+        if(isset($_SESSION['email']))
+       {
+        echo "<li><a href='admain/admin_view.php' class='item'>".$_SESSION['email']."</a></li>";
+        }
+         else
+         {
+            echo "<li><a href='admain/login_page.php' class='item'>Login</a></li>";
+         }
+         ?>
      </ul>
     </div>
          <div class="top-bar-right">

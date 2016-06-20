@@ -35,9 +35,42 @@ if(!isset($_SESSION['email'])){
   </div>
   <div class="medium-10 column change-margin">
   <h4>All Condidates records</h4><hr>
- <?php admin_view(); ?>
- <?php approve(); ?>
- <?php ?>
+
+    <div class="row">
+    <div class="medium-6 column">
+      <form action="" method="POST">
+      <label for="username" class="medium-4 column text-right">Enter username</label>
+      <div class="medium-8 column">
+      <input type="text" name="username" placeholder="Enter username....">
+      </div>
+      <label for="username" class="medium-4 column text-right">Choose Password</label>
+      <div class="medium-8 column">
+      <input type="password" name="password" placeholder="Choose password....">
+      </div>
+      <label for="username" class="medium-4 column text-right">Select NA</label>
+      <div class="medium-8 column">
+      <select name="province" id="pro">
+        <option value="">Select Provice</option>
+        <option value="1">KPK</option>
+        <option value="2">PUNJAB</option>
+        <option value="3">SINDH</option>
+        <option value="4">BALUCHISTAN</option>
+        <option value="5">FATA</option>
+        <option value="6">FEDERAL</option>
+      </select>
+      </div>
+            <div class="medium-8 column medium-offset-4">
+      <div class="distric-error"></div>
+      </div>
+      <div class="medium-8 column medium-offset-4">
+      <input type="submit" name="create" value="Create" class="primary button hollow">
+      </div><!--medium 8 close-->
+      </form><!--form close-->
+      <?php create_local_admin(); ?>
+      </div>
+      </div>
+
+
 </div>
 </div>
 
@@ -52,6 +85,7 @@ if(!isset($_SESSION['email'])){
  <!-- <script src="js/upload_files.js"></script> -->
 <script type="text/javascript" src="../jquery.js"></script>
 <script type="text/javascript" src="../ajax.js"></script>
+<script type="text/javascript" src="ajax.js"></script>
 <!-- <script type="text/javascript" src="js/upload.js"></script>	 -->
 <!-- <script type="text/javascript" src="js/upload_image.js"></script> -->
 <!-- <script type="text/javascript" src="js/signup.js"></script>	 -->

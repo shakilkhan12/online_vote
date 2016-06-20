@@ -28,6 +28,7 @@ if(!isset($_SESSION['email'])){
   <div class="row change-row">
   <div class="medium-2 column">
     
+
 <?php include_once 'overall/list.php'; ?>
 
 
@@ -35,9 +36,7 @@ if(!isset($_SESSION['email'])){
   </div>
   <div class="medium-10 column change-margin">
   <h4>All Condidates records</h4><hr>
- <?php admin_view(); ?>
- <?php approve(); ?>
- <?php ?>
+<?php all_disapprove(); ?>
 </div>
 </div>
 

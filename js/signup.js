@@ -276,8 +276,8 @@ else
  $('#submit').click(function(){
   if(name == "" || cnic == "" || email == "" || address == "" || gender == "" || district == "" || party == "")
    {
-    $('.sorry').addClass('khan');
-    $('.sorry').html('<strong>Error!  </strong>'+'Sorry please fill out all fields and try again!');
+    $('.sorry').addClass('error-occur');
+    $('.sorry').html('Sorry please fill out all fields and try again!');
     // alert('sorru');
   }
   else

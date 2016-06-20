@@ -7,17 +7,22 @@ include_once "inc/connection.php";
 <?php include_once 'overall/nav.php'; ?>
 <div class="container">
 <div class="row">
-<div class="medium-6 column">
-	<h3>Registration Section!</h3><hr>
-	<a href="condidate_apply.php" class="primary button holow">Condidate Registration</a>
-	<a href="voter_apply.php" class="primary button holow">Voter Registration</a>
-</div><!--medium 6 column close-->
+<div class="medium-8 column">
+	<?php if(isset($_GET['voter']))
+
+	{
+      echo $_GET['voter'];
+		} 
+		?>
+</div>
+
 </div>
 </div><!--close container tag-->
 
 
 <!--adding javascirpt files-->
 <?php include_once 'overall/javascript_files.php'; ?>
+<script type="text/javascript" src="js/voter.js"></script>
 
 </body>
 </html>

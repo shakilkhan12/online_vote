@@ -6,19 +6,7 @@
  <div class="row change-row">
  <div class="medium-2 column">
     
-
-   <ul class="vertical dropdown menu custom-menu" data-dropdown-menu style="max-width: 300px;">
-  <li><a href="#" class="text-center">Dashboard</a></li>
-  <li><a href="localadmin.php" class="text-center">Local Admin</a></li>
-  <li><a href="#" class="text-center">Condidates</a></li>
-  <li><a href="#" class="text-center">Delete</a></li>
-  <li><a href="#" class="text-center">Item 1</a></li>
-  <li><a href="#" class="text-center">Item 1</a></li>
-  <li><a href="#" class="text-center">Item 1</a></li>
-  <li><a href="#" class="text-center">Item 1</a></li>
-  <li><a href="#" class="text-center">Item 1</a></li>
-  <!-- ... -->
-</ul>
+<?php include_once 'overall/list.php'; ?>
   </div>
 <div class="medium-10 column change-margin">
 <h4>Condidate Profile</h4><hr>

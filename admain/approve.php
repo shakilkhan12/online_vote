@@ -35,9 +35,7 @@ if(!isset($_SESSION['email'])){
   </div>
   <div class="medium-10 column change-margin">
   <h4>All Condidates records</h4><hr>
- <?php admin_view(); ?>
- <?php approve(); ?>
- <?php ?>
+<?php all_approve(); ?>
 </div>
 </div>
 

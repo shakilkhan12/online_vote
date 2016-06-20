@@ -65,7 +65,7 @@ function admin_view()
          	<td>$name</td>
          	<td><a href='document_view.php?user_id= $id' class='button primary hollow'>View</a></td>
          	<td><a href='admin_view.php?approve=$id' class='button success hollow'>Approve</a></td>
-         	<td><a href='admin_view.php?disapprove=$id' class='button primary hollow'>Disapprove</a></td>
+         	<td><a href='dis.php?disapprove=$id' class='button primary hollow'>Disapprove</a></td>
             <td><a href='pdf.php?pdf=$id' class='button success hollow'>PDF</a></td>
          </tr>
          </tbody>
@@ -159,13 +159,17 @@ function approve()
 function disapprove()
 {
     GLOBAL $connection;
-    if(isset($_GET['disapprove']))
+    if(isset($_GET['disapprove']) && isset($_POST['dis']))
     {
         $disapprove = $_GET['disapprove'];
-        $disapprove_query = mysqli_query($connection,"UPDATE `signup_condidate` SET `status` = 'disapprove' WHERE `id` = '$disapprove'");
+        $msg = $_POST['msg'];
+        $disapprove_query = mysqli_query($connection,"UPDATE `signup_condidate` SET `status` = 'disapprove',`msg` = '$msg' WHERE `id` = '$disapprove'");
         if($disapprove_query)
         {
+
          header("Location: admin_view.php");
+
+
         }
         else
         {
@@ -182,19 +186,20 @@ function results()
     if(isset($_POST['result_btn']))
     {
         $result = $_POST['result'];
-        $result_query = mysqli_query($connection, "SELECT `status` FROM `signup_condidate` WHERE `cnic` = '$result' OR `email` = '$result'");
+        $result_query = mysqli_query($connection, "SELECT `status`,`msg` FROM `signup_condidate` WHERE `cnic` = '$result' OR `email` = '$result'");
         $count = mysqli_num_rows($result_query);
         if($count == 1)
         {
          $r = mysqli_fetch_array($result_query);
          $status = $r['status'];
+         $msg = $r['msg'];
          if($status == 'approve')
          {
             echo "<div style='color:green;'>Congratulation you are approve!</div>";
          }
          else if($status == 'disapprove')
          {
-            echo "<div style='color:red;'>Sorry you are rejected!</div>";
+            echo "<div style='color:red;'>$msg</div>";
          }
          else
          {
@@ -284,6 +289,186 @@ function results()
       }
     }
   }
+
+  function all_approve()
+  {
+    GLOBAL $connection;
+    $approve_query = mysqli_query($connection, "SELECT * FROM `signup_condidate` WHERE `status` = 'approve'");
+
+    $count = mysqli_num_rows($approve_query);
+    if($count == 0)
+    {
+      echo "<div class='error-occur'>No records found!</div>";
+    }
+    else
+    {
+      echo 
+      "
+      <table>
+             <thead>
+              <tr>
+              <th>Name</th>
+              <th>Cnic</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Gender</th>
+              <th>District</th>
+              <th>Party</th>
+              <th>Status</th>
+              </tr>
+             </thead>
+      ";
+      while($r = mysqli_fetch_array($approve_query))
+      {
+        $name = $r['name'];
+        $cnic = $r['cnic'];
+        $email = $r['email'];
+        $address = $r['address'];
+        $district = $r['district'];
+        $gender = $r['gender'];
+        $party = $r['party'];
+        $status = $r['status'];
+        echo 
+        "
+        <tbody>
+        <tr>
+        <td>$name</td>
+        <td>$cnic</td>
+        <td>$email</td>
+        <td>$address</td>
+        <td>$district</td>
+        <td>$gender</td>
+        <td>$party</td>
+        <td>$status</td>
+        </tr>
+        </tbody>
+        ";
+      }
+      echo "</table>";
+    }
+  }
+
+
+
+    function all_disapprove()
+  {
+    GLOBAL $connection;
+    $approve_query = mysqli_query($connection, "SELECT * FROM `signup_condidate` WHERE `status` = 'disapprove'");
+
+    $count = mysqli_num_rows($approve_query);
+    if($count == 0)
+    {
+      echo "<div class='error-occur'>No records found!</div>";
+    }
+    else
+    {
+      echo 
+      "
+      <table>
+             <thead>
+              <tr>
+              <th>Name</th>
+              <th>Cnic</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Gender</th>
+              <th>District</th>
+              <th>Party</th>
+              <th>Status</th>
+              </tr>
+             </thead>
+      ";
+      while($r = mysqli_fetch_array($approve_query))
+      {
+        $name = $r['name'];
+        $cnic = $r['cnic'];
+        $email = $r['email'];
+        $address = $r['address'];
+        $district = $r['district'];
+        $gender = $r['gender'];
+        $party = $r['party'];
+        $status = $r['status'];
+        echo 
+        "
+        <tbody>
+        <tr>
+        <td>$name</td>
+        <td>$cnic</td>
+        <td>$email</td>
+        <td>$address</td>
+        <td>$district</td>
+        <td>$gender</td>
+        <td>$party</td>
+        <td>$status</td>
+        </tr>
+        </tbody>
+        ";
+      }
+      echo "</table>";
+    }
+  }
+
+
+
+
+      function all_pendding()
+  {
+    GLOBAL $connection;
+    $approve_query = mysqli_query($connection, "SELECT * FROM `signup_condidate` WHERE `status` = 'pendding'");
+
+    $count = mysqli_num_rows($approve_query);
+    if($count == 0)
+    {
+      echo "<div class='error-occur'>No records found!</div>";
+    }
+    else
+    {
+      echo 
+      "
+      <table>
+             <thead>
+              <tr>
+              <th>Name</th>
+              <th>Cnic</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Gender</th>
+              <th>District</th>
+              <th>Party</th>
+              <th>Status</th>
+              </tr>
+             </thead>
+      ";
+      while($r = mysqli_fetch_array($approve_query))
+      {
+        $name = $r['name'];
+        $cnic = $r['cnic'];
+        $email = $r['email'];
+        $address = $r['address'];
+        $district = $r['district'];
+        $gender = $r['gender'];
+        $party = $r['party'];
+        $status = $r['status'];
+        echo 
+        "
+        <tbody>
+        <tr>
+        <td>$name</td>
+        <td>$cnic</td>
+        <td>$email</td>
+        <td>$address</td>
+        <td>$district</td>
+        <td>$gender</td>
+        <td>$party</td>
+        <td>$status</td>
+        </tr>
+        </tbody>
+        ";
+      }
+      echo "</table>";
+    }
+  }
+
 
 
 
