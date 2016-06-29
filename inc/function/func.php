@@ -135,6 +135,67 @@ function document_view()
 }
 
 
+
+
+function local_document_view()
+{
+  GLOBAL $connection;
+  if(isset($_GET['user_id']))
+  {
+    $user_id = $_GET['user_id'];
+    $all_records = mysqli_query($connection,"SELECT * FROM `signup_condidate` WHERE `id` = '$user_id'");
+    if(mysqli_num_rows($all_records) == 1)
+    {
+         while($r = mysqli_fetch_array($all_records))
+         {
+          $image = $r['image'];
+          $name = $r['name'];
+          $cnic = $r['cnic'];
+          $email = $r['email'];
+          $address = $r['address'];
+          $gender = $r['gender'];
+          $district = $r['district'];
+          $party = $r['party'];
+          echo "<img class='pro_img' src='../../ajax/condidate_images/$image'><br><br>";
+           echo "
+             <table>
+             <thead>
+              <tr>
+              <th>Name</th>
+              <th>Cnic</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Gender</th>
+              <th>District</th>
+              <th>Party</th>
+              </tr>
+             </thead>
+             <tbody>
+             <tr>
+
+            <td>$name</td>
+            <td>$cnic</td>
+            <td>$email</td>
+            <td>$address</td>
+            <td>$gender</td>
+            <td>$district</td>
+            <td>$party</td>
+             </tr>
+             </tbody>
+             
+
+          ";
+         }
+         echo "</table>";
+    }
+    else
+    {
+
+    }
+  }
+}
+
+
 function approve()
 {
     GLOBAL $connection;
@@ -146,6 +207,26 @@ function approve()
         {
             
             header("Location: admin_view.php");
+        }
+        else
+        {
+            echo "<script>alert('not approve');</script>";
+        }
+    }
+}
+
+
+function local_approve()
+{
+    GLOBAL $connection;
+    if(isset($_GET['l_approve']))
+    {
+        $approve = $_GET['l_approve'];
+        $approve_query = mysqli_query($connection,"UPDATE `signup_condidate` SET `status` = 'approve' WHERE `id` = '$approve'");
+        if($approve_query)
+        {
+            
+            header("Location: local_dashboard.php");
         }
         else
         {
@@ -168,6 +249,29 @@ function disapprove()
         {
 
          header("Location: admin_view.php");
+
+
+        }
+        else
+        {
+          echo "<script>alert('Reject query not work!');</script>";
+        }
+    }
+}
+
+
+function local_disapprove()
+{
+    GLOBAL $connection;
+    if(isset($_GET['l_disapprove']) && isset($_POST['dis']))
+    {
+        $disapprove = $_GET['l_disapprove'];
+        $msg = $_POST['msg'];
+        $disapprove_query = mysqli_query($connection,"UPDATE `signup_condidate` SET `status` = 'disapprove',`msg` = '$msg' WHERE `id` = '$disapprove'");
+        if($disapprove_query)
+        {
+
+         header("Location: local_dashboard.php");
 
 
         }
@@ -249,10 +353,28 @@ function results()
    }
    else
    {
-   $admin_query = mysqli_query($connection, "INSERT INTO localadmin (username,password,na) VALUES ('$username','$password','$na')");
+    $check_username = mysqli_query($connection,"SELECT `username` FROM `localadmin` WHERE `username` = '$username'");
+    $count = mysqli_num_rows($check_username);
+    if($count == 1)
+    {
+     echo "<div class='error-occur'>Sorry this username is already exist in database!</div>";
+    }
+    else
+    {
+      $check_na = mysqli_query($connection,"SELECT `na` FROM `localadmin` WHERE `na` = '$na'");
+      $na_count = mysqli_num_rows($check_na);
+      if($na_count == 1)
+      {
+        echo "<div class='error-occur'>Sorry this NA is already assign to another admin!</div>";
+      }
+      else
+      {
+              $admin_query = mysqli_query($connection, "INSERT INTO localadmin (username,password,na) VALUES ('$username','$password','$na')");
    if($admin_query)
    {
-    header("Location:login_page.php");
+    
+    header('Location:local/login_local.php');
+
    }
    else
    {
@@ -260,6 +382,10 @@ function results()
       Query not work
       </div>";
    }
+      }
+
+    }
+
 }
     }
   }
@@ -275,6 +401,8 @@ function results()
       $count = mysqli_num_rows($local_query);
       if($count == 1)
       {
+        $na = mysqli_fetch_object($local_query)->na;
+        $_SESSION['na'] = $na;
         $_SESSION['username'] = $username;
         header("Location:local_dashboard.php");
       }
@@ -289,6 +417,44 @@ function results()
       }
     }
   }
+
+
+  function local_admin_condidates()
+  {
+    GLOBAL $connection;
+    $na = $_SESSION['na'];
+    $local_admin_condidates_query = mysqli_query($connection, "SELECT * FROM `signup_condidate` WHERE `district` = '$na' && `status` = 'pendding'");
+    $count = mysqli_num_rows($local_admin_condidates_query);
+    if($count == 0)
+    {
+      echo "<div class='error-occur'>No condidates records!</div>";
+    }
+    else
+    {
+      echo "<table>
+      <thead>
+      <tr><th>Photo</th><th>Name</th><th>Approve</th><th>Disapprove</th><th>PDF</th></tr>
+      </thead>";
+      while($r = mysqli_fetch_array($local_admin_condidates_query))
+      {
+          $id = $r['id'];
+          $image = $r['image'];
+           $name = $r['name'];
+           echo "<tbody>
+           <tr><td><img class='pro_img' src='../../ajax/condidate_images/$image'</td>
+           <td>$name</td>
+           <td><a href='document_view.php?user_id=$id' class='button primary'>View</a></td>
+           <td><a href='dis.php?l_disapprove=$id' class='button alert'><i class='fa fa-remove'><i></a></td>
+           <td><a href='local_dashboard.php?l_approve=$id'class='button success'>Approve</a></td>
+           <td><a href='pdf.php?pdf=$id' class='button primary'>PDF</a></td>
+           </tr>
+           </tbody>";
+       
+      }
+
+    }
+  }
+
 
   function all_approve()
   {
@@ -311,8 +477,8 @@ function results()
               <th>Cnic</th>
               <th>Email</th>
               <th>Address</th>
-              <th>Gender</th>
               <th>District</th>
+              <th>Gender</th>
               <th>Party</th>
               <th>Status</th>
               </tr>
@@ -347,6 +513,68 @@ function results()
       echo "</table>";
     }
   }
+
+
+
+    function local_all_approve()
+  {
+    GLOBAL $connection;
+    $na = $_SESSION['na'];
+    $approve_query = mysqli_query($connection, "SELECT * FROM `signup_condidate` WHERE `status` = 'approve' && `district` = '$na'");
+
+    $count = mysqli_num_rows($approve_query);
+    if($count == 0)
+    {
+      echo "<div class='error-occur'>No records found!</div>";
+    }
+    else
+    {
+      echo 
+      "
+      <table>
+             <thead>
+              <tr>
+              <th>Name</th>
+              <th>Cnic</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>District</th>
+              <th>Gender</th>
+              <th>Party</th>
+              <th>Status</th>
+              </tr>
+             </thead>
+      ";
+      while($r = mysqli_fetch_array($approve_query))
+      {
+        $name = $r['name'];
+        $cnic = $r['cnic'];
+        $email = $r['email'];
+        $address = $r['address'];
+        $district = $r['district'];
+        $gender = $r['gender'];
+        $party = $r['party'];
+        $status = $r['status'];
+        echo 
+        "
+        <tbody>
+        <tr>
+        <td>$name</td>
+        <td>$cnic</td>
+        <td>$email</td>
+        <td>$address</td>
+        <td>$district</td>
+        <td>$gender</td>
+        <td>$party</td>
+        <td>$status</td>
+        </tr>
+        </tbody>
+        ";
+      }
+      echo "</table>";
+    }
+  }
+
 
 
 
@@ -409,12 +637,133 @@ function results()
   }
 
 
+      function local_all_disapprove()
+  {
+    GLOBAL $connection;
+    $na = $_SESSION['na'];
+    $approve_query = mysqli_query($connection, "SELECT * FROM `signup_condidate` WHERE `status` = 'disapprove' && `district` = '$na'");
+
+    $count = mysqli_num_rows($approve_query);
+    if($count == 0)
+    {
+      echo "<div class='error-occur'>No records found!</div>";
+    }
+    else
+    {
+      echo 
+      "
+      <table>
+             <thead>
+              <tr>
+              <th>Name</th>
+              <th>Cnic</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Gender</th>
+              <th>District</th>
+              <th>Party</th>
+              <th>Status</th>
+              </tr>
+             </thead>
+      ";
+      while($r = mysqli_fetch_array($approve_query))
+      {
+        $name = $r['name'];
+        $cnic = $r['cnic'];
+        $email = $r['email'];
+        $address = $r['address'];
+        $district = $r['district'];
+        $gender = $r['gender'];
+        $party = $r['party'];
+        $status = $r['status'];
+        echo 
+        "
+        <tbody>
+        <tr>
+        <td>$name</td>
+        <td>$cnic</td>
+        <td>$email</td>
+        <td>$address</td>
+        <td>$district</td>
+        <td>$gender</td>
+        <td>$party</td>
+        <td>$status</td>
+        </tr>
+        </tbody>
+        ";
+      }
+      echo "</table>";
+    }
+  }
+
+
 
 
       function all_pendding()
   {
     GLOBAL $connection;
     $approve_query = mysqli_query($connection, "SELECT * FROM `signup_condidate` WHERE `status` = 'pendding'");
+
+    $count = mysqli_num_rows($approve_query);
+    if($count == 0)
+    {
+      echo "<div class='error-occur'>No records found!</div>";
+    }
+    else
+    {
+      echo 
+      "
+      <table>
+             <thead>
+              <tr>
+              <th>Name</th>
+              <th>Cnic</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Gender</th>
+              <th>District</th>
+              <th>Party</th>
+              <th>Status</th>
+              </tr>
+             </thead>
+      ";
+      while($r = mysqli_fetch_array($approve_query))
+      {
+        $name = $r['name'];
+        $cnic = $r['cnic'];
+        $email = $r['email'];
+        $address = $r['address'];
+        $district = $r['district'];
+        $gender = $r['gender'];
+        $party = $r['party'];
+        $status = $r['status'];
+        echo 
+        "
+        <tbody>
+        <tr>
+        <td>$name</td>
+        <td>$cnic</td>
+        <td>$email</td>
+        <td>$address</td>
+        <td>$district</td>
+        <td>$gender</td>
+        <td>$party</td>
+        <td>$status</td>
+        </tr>
+        </tbody>
+        ";
+      }
+      echo "</table>";
+    }
+  }
+
+
+
+        function local_all_pendding()
+  {
+    GLOBAL $connection;
+    $na = $_SESSION['na'];
+    $approve_query = mysqli_query($connection, "SELECT * FROM `signup_condidate` WHERE `status` = 'pendding' && `district` = '$na'");
 
     $count = mysqli_num_rows($approve_query);
     if($count == 0)

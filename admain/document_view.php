@@ -1,4 +1,10 @@
+
 <?php include_once '../inc/connection.php'; ?>
+<?php if(!isset($_SESSION['email']))
+
+{header('Location:admin_login.php');}
+
+ ?>
 <?php include_once '../inc/function/func.php'; ?>
 <?php include_once 'overall/header.php'; ?>
 <body>

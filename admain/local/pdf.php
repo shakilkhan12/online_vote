@@ -1,5 +1,5 @@
 <?php 	
- include_once '../inc/connection.php';
+ include_once '../../inc/connection.php';
  if(isset($_GET['pdf']))
  {
  	$pdf = $_GET['pdf'];
@@ -7,7 +7,7 @@
  	$run = mysqli_fetch_object($pdf_query);
  	$pdf_files = $run->files;
 
- 	$file = "../ajax/store_files/$pdf_files";
+ 	$file = "../../ajax/store_files/$pdf_files";
 	header('Content-type:application/pdf');
 	header("Content-Disposition:inline; filename = $file");
 	header('Content-Transfer-Encoding:binary');

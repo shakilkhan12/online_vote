@@ -9,7 +9,7 @@
 </div><!--row close-->
 	<div class="row index-page">
 		<div class="medium-10 columns contents">
-        <h3>Wellcome to voting system</h3>
+        <h3>About Us</h3>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste dolorem reprehenderit alias voluptatum illum sunt consectetur, aliquam cum aspernatur dolorum rem! Provident corporis atque assumenda nihil deleniti odit natus esse!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed veniam dolor recusandae id ut nam mollitia earum aliquam architecto modi est maiores sapiente, tempore officia beatae voluptatem dicta nesciunt, amet!
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste dolorem reprehenderit alias voluptatum illum sunt consectetur, aliquam cum aspernatur dolorum rem! Provident corporis atque assumenda nihil deleniti odit natus esse!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed veniam dolor recusandae id ut nam mollitia earum aliquam architecto modi est maiores sapiente, tempore officia beatae voluptatem dicta nesciunt, amet!
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste dolorem reprehenderit alias voluptatum illum sunt consectetur, aliquam cum aspernatur dolorum rem! Provident corporis atque assumenda nihil deleniti odit natus esse!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed veniam dolor recusandae id ut nam mollitia earum aliquam architecto modi est maiores sapiente, tempore officia beatae voluptatem dicta nesciunt, amet!

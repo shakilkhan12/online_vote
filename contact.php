@@ -9,10 +9,30 @@
 </div><!--row close-->
 	<div class="row index-page">
 		<div class="medium-10 columns contents">
-        <h3>Wellcome to voting system</h3>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste dolorem reprehenderit alias voluptatum illum sunt consectetur, aliquam cum aspernatur dolorum rem! Provident corporis atque assumenda nihil deleniti odit natus esse!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed veniam dolor recusandae id ut nam mollitia earum aliquam architecto modi est maiores sapiente, tempore officia beatae voluptatem dicta nesciunt, amet!
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste dolorem reprehenderit alias voluptatum illum sunt consectetur, aliquam cum aspernatur dolorum rem! Provident corporis atque assumenda nihil deleniti odit natus esse!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed veniam dolor recusandae id ut nam mollitia earum aliquam architecto modi est maiores sapiente, tempore officia beatae voluptatem dicta nesciunt, amet!
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste dolorem reprehenderit alias voluptatum illum sunt consectetur, aliquam cum aspernatur dolorum rem! Provident corporis atque assumenda nihil deleniti odit natus esse!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed veniam dolor recusandae id ut nam mollitia earum aliquam architecto modi est maiores sapiente, tempore officia beatae voluptatem dicta nesciunt, amet!
+        <h4>Contact Us</h4><hr>
+        <table>
+        <thead>
+        	<tr>
+        		<th>Name</th>
+        		<th>Contact</th>
+        		
+        	</tr>
+        </thead>
+        <tbody>
+        	<tr>
+        		<td>Phone</td>
+        		<td>091 3456345</td>
+        	</tr>
+        	<tr>
+        		<td>Email</td>
+        		<td>Haroonse@gmail.com   <strong>&&</strong>   Ishaqse@gmail.com</td>
+        	</tr>
+        	<tr>
+        		<td>Mobile</td>
+        		<td>0333 4567456</td>
+        	</tr>
+        </tbody>	
+        </table><!-- close table-->
 		</div><!--col medium 12 close-->
 		<div class="medium-2 columns">
 		<h5>Follow Us On</h5><hr>
